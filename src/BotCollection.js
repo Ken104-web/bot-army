@@ -13,7 +13,6 @@ function BotCollection() {
       .then(data => setProfile(data));
   }, []);
   const handleBotEnlist = (bot) => {
-    // Check if the bot is not already enlisted
     if (!enlistedBots.some((enlistedBot) => enlistedBot.id === bot.id)) {
       setEnlistedBots([...enlistedBots, bot]);
     }

@@ -7,20 +7,27 @@ const YourBotArmy = ({ enlistedBots, onDelete }) => {
     fetch(`http://localhost:3000/bots/${botId}`, {
       method: "DELETE",
     })
-      .then((resp) => resp.json())
-      .then((data) => {
-        onDelete(data);
+      .then((resp) => {
+        if (resp.ok) {
+          onDelete(enlistedBots.filter((bot) => bot.id !== botId));
+        } else {
+          console.error("Failed to delete bot from the backend.");
+        }
       })
+      .catch((error) => {
+        console.error("Error deleting bot:", error);
+      });
   }
 
   return (
     <div>
       <h1>Your Bot Army</h1>
       {bots.map((bot) => (
-        <div key={bot.id} onClick={() => handleDelete(bot.id)}>
+        <div key={bot.id}>
           <img className="bot-avatar" src={bot.avatar_url} alt="" />
           <h2 className="bot-name">{bot.name}</h2>
           <p className="bot-catchphrase">{bot.catchphrase}</p>
+          <button onClick={() => handleDelete(bot.id)}>x</button>
         </div>
       ))}
     </div>
