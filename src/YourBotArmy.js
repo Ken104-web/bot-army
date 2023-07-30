@@ -1,32 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
 
-const YourBotArmy = () => {
-    const [botArmy, setBotArmy] = useState([])
-    const location = useLocation();
-
-    useEffect(() => {
-        fetch('http://localhost:3000/bots')
-        .then(resp  => resp.json())
-        .then((data) => setBotArmy(data))
-    },[]) 
-       
-        
-  return (
+const YourBotArmy = ({ enlistedBots }) => {
+  const bots = enlistedBots ?? [];
+    return (
     <div>
-      <h2>Your Bot Army</h2>
-      {botArmy.map((bot, index) => (
-        <span key={index}>
+      <h1>Your Bot Army</h1>
+      {bots.map((bot) => (
+        <div key={bot.id}>
           <img className="bot-avatar" src={bot.avatar_url} alt="" />
           <h2 className="bot-name">{bot.name}</h2>
           <p className="bot-catchphrase">{bot.catchphrase}</p>
-        </span>
+        </div>
       ))}
-      <Link to="/">To Bot Collection</Link>
-      {/* conditional rendering */}
-      {location.pathname !== "/yourbotarmy" && (
-        <Link to="/yourbotarmy">Go to bot army</Link>
-      )}
     </div>
   );
 };
