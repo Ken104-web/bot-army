@@ -14,7 +14,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<BotCollection enlistedBots={enlistedBot} />} />
-      <Route path="/yourbotarmy" element={<YourBotArmy onDelete={deleteBot} enlistedBots={enlistedBot} />} />
+      <Route path="/yourbotarmy" element={<YourBotArmy enlistedBots={enlistedBot} onDelete={deleteBot} />} />
     </Routes>
   );
 }

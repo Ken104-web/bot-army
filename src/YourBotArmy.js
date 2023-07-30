@@ -14,9 +14,6 @@ const YourBotArmy = ({ enlistedBots, onDelete }) => {
           console.error("Failed to delete bot from the backend.");
         }
       })
-      .catch((error) => {
-        console.error("Error deleting bot:", error);
-      });
   }
 
   return (
