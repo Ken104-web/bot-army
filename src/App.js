@@ -11,10 +11,11 @@ function App() {
     setEnlistedBots(enlistedBot.filter((bot) => bot.id !== botId));
   }
 
+
   return (
     <Routes>
       <Route path="/" element={<BotCollection enlistedBots={enlistedBot} />} />
-      <Route path="/yourbotarmy" element={<YourBotArmy enlistedBots={enlistedBot} onDelete={deleteBot} />} />
+      <Route path="/yourbotarmy" element={<YourBotArmy enlistedBots={enlistedBot} onDelete={deleteBot}/>} />
     </Routes>
   );
 }

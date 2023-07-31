@@ -3,6 +3,7 @@ import React from "react";
 const YourBotArmy = ({ enlistedBots, onDelete }) => {
   const bots = enlistedBots ?? [];
 
+
   function handleDelete(botId) {
     fetch(`http://localhost:3000/bots/${botId}`, {
       method: "DELETE",
@@ -15,6 +16,7 @@ const YourBotArmy = ({ enlistedBots, onDelete }) => {
         }
       })
   }
+  
 
   return (
     <div>
